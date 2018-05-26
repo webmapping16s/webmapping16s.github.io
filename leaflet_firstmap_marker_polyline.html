@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>first leaflet map with polyline</title>
+<style>
+h1 {
+	color: green;
+}
+</style>
+<link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+<script src="./js/leaflet/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="width:900px;height:600px"></div>
+    <script>
+        var map = L.map('map', {
+            center : [47.208611, 11.460556],
+            zoom : 12
+        });
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+        }).addTo(map);
+
+        L.control.scale({
+            'imperial': false
+        }).addTo(map);
+
+        L.marker([47.264479,11.385213]).addTo(map).bindPopup('Uni');
+        L.marker([47.24725119827393,11.399774551391602]).addTo(map).bindPopup('Bergisel');
+        L.marker([47.229477404699665,11.41404390335083]).addTo(map).bindPopup('Igls');
+        L.marker([47.21111460503149,11.452431678771973]).addTo(map).bindPopup('Patscherkofel');
+        L.marker([47.21224424650966,11.477097272872925]).addTo(map).bindPopup('Boscheben');
+        L.marker([47.2081701360894,11.488502025604248]).addTo(map).bindPopup('Meißner Haus');
+
+        var linie = L.polyline([
+            [47.264479,11.385213],
+            [47.24725119827393,11.399774551391602],
+            [47.229477404699665,11.41404390335083],
+            [47.21111460503149,11.452431678771973],
+            [47.21224424650966,11.477097272872925],
+            [47.2081701360894,11.488502025604248]
+        ], {color: 'green',weight: 10}).addTo(map);
+
+        map.fitBounds(linie.getBounds());
+
+    </script>
+</body>
+</html>

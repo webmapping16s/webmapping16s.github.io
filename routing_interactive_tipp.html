@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Routing mit der Leaflet Routing Machine - interaktiv mit Tipp</title>
+    <link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+    <script src="./js/leaflet/leaflet.js"></script>
+
+    <link rel="stylesheet" href="./js/leaflet.routing.machine/leaflet-routing-machine.css" />
+    <script src="./js/leaflet.routing.machine/leaflet-routing-machine.min.js"></script>
+    <script>
+        window.onload = function () {
+            var map = L.map('routingmap', {
+                layers : [
+                    L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+                        subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                        attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+                    })
+                ],
+                center : [47.26, 11.38],
+                zoom : 10
+            });
+
+            L.control.scale({
+                'imperial': false
+            }).addTo(map);
+
+            // Variable für den Tipp Marker definieren
+            var tipp_marker;
+
+            // Routing control hinzufügen und minimieren
+            var routing_control = L.Routing.control({
+                show : false
+            }).addTo(map);
+
+            // Klicks auf Karte verarbeiten
+            map.on("click", function (event) {
+                if (tipp_marker) {
+                    // Wegpunkte setzen und Routing control zeigen
+                    routing_control.setWaypoints([
+                        tipp_marker.getLatLng(),
+                        event.latlng
+                    ]);
+                    routing_control.show();
+
+                    // Tipp Marker löschen
+                    map.removeLayer(tipp_marker);
+                    tipp_marker = null;
+
+                } else {
+                    // Routing control minimieren
+                    routing_control.hide()
+
+                    // Tipp anzeigen und Marker merken
+                    tipp_marker = L.marker(event.latlng).addTo(map);
+                    tipp_marker.bindPopup('Ziel klicken ...').openPopup();
+                }
+            });
+        };
+
+    </script>
+</head>
+<body>
+    <h1>Routing mit der Leaflet Routing Machine - interaktiv mit Tipp</h1>
+    <h3>Innsbruck - Matrei in Osttirol</h3>
+    <div id="routingmap" style='width:900px;height:600px;'></div>
+    <h3>Links</h3>
+    <ul>
+        <li><a href="http://www.liedman.net/leaflet-routing-machine/">Leaflet Routing Machine</a></li>
+        <li><a href="http://project-osrm.org/">OSRM - Open source routing engine</a></li>
+    </ul>
+</body>
+</html>

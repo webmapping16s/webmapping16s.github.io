@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nationalpark Hohe Tauern Points of interest - Marker Kreise</title>
+<link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+<script src="./js/leaflet/leaflet.js"></script>
+<script src="./geojson/nphtt_pois.geojson.js"></script>
+</head>
+<body>
+    <h1>Nationalpark Hohe Tauern Points of interest - Marker Kreise</h1>
+    <div id="map" style="width:900px;height:600px"></div>
+    <style>
+        .legend_div {
+            background-color: #fff;
+            padding: 10px;
+        }
+        .legend_rect {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+        }
+    </style>
+    <script>
+    window.onload = function () {
+
+        var map = L.map('map');
+
+        // Basis layer hinzufügen
+        L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+            subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+            attribution : 'Datenquellen: <a href="http://www.basemap.at/">basemap.at</a>, <a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/">Land Tirol</a>'
+        }).addTo(map);
+
+        // Maßstabsleiste hinzufügen
+        L.control.scale({
+            'imperial': false
+        }).addTo(map);
+
+       // Marker als Kreise mit Pop ups über GeoJSON zur Karte hinzufügen
+        var pois = L.geoJson(window.POIS_GEOJSON, {
+            // Kreise nach Typ einfärben
+            style: function (feature) {
+                var poi_color = null;
+                if (feature.properties.POI_TYP < 20) {          // 10-19: NP-Infrastruktur
+                    poi_color = 'crimson';
+                } else if (feature.properties.POI_TYP < 30) {   // 20-29: Infrastruktur Allgemein
+                    poi_color = 'yellow';
+                } else if (feature.properties.POI_TYP < 40) {   // 30-40: Event-Punkte
+                    poi_color = 'orange';
+                } else if (feature.properties.POI_TYP < 50) {   // 40-50: TVB etc
+                    poi_color = 'red';
+                } else {
+                    poi_color = 'black';
+                }
+                return {
+                    color : '#000',
+                    weight : 1,
+                    fillColor : poi_color,
+                    fillOpacity : 0.7,
+                }
+            },
+            onEachFeature: function (feature, layer) {
+                // Pop up hinzufügen
+                var description = feature.properties.NAME;
+                if (feature.properties.SEEHOEHE > 0 && feature.properties.SEEHOEHE !== 9999) {
+                    description += ' (' + feature.properties.SEEHOEHE + 'm)';
+                }
+                layer.bindPopup(description);
+            },
+            pointToLayer: function (feature, latlng) {
+                // Kreise statt dem Standard Marker verwenden
+                return L.circleMarker(latlng);
+            }
+        }).addTo(map);
+
+        // Ausschnitt setzen
+        map.fitBounds(pois.getBounds());
+
+        // Legende hinzufügen
+        var legend = L.control({ position: 'bottomleft' });
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div','legend_div');
+            var colors = ['yellow','orange','red','crimson'];
+            var labels = ['Infrastruktur allgemein','Event-Punkte','TVB etc','NP-Infrastruktur'];
+            for (var i = 0; i < colors.length; i += 1) {
+                div.innerHTML += '<span class="legend_rect" style="background:' + colors[i] + '">&nbsp;</span> ' + labels[i] + '<br/>';
+            }
+            return div;
+        };
+        legend.addTo(map);
+
+    };
+    </script>
+
+    <article>
+        <h3>Links</h3>
+        <ul>
+            <li>Datenquelle: <a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/">Nationalpark Hohe Tauern Points of interest</a> (<a href="https://gis.tirol.gv.at/ogd/sport_freizeit/NPHT/nphtt_pointsofinterest_wgs84_shp.zip">shp</a>)</li>
+        </ul>
+    </article>
+
+</body>
+</html>

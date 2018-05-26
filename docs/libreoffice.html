@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Web mapping Kurs: LibreOffice Tipps</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+body {
+    width: 900px;
+    margin: auto;
+}
+pre, code {
+    font-size: 110%;
+}
+@media print {
+    body {
+        width: 100%;
+    }
+    .newpage {
+        page-break-before: always;
+    }
+}
+</style>
+</head>
+<body>
+
+<main>
+
+<h1>Web mapping Kurs: LibreOffice Tipps</h1>
+
+<article class="docs">
+<h2>=VERKETTEN Funktion</h2>
+<p>Mit Hilfe der Funktion <code>=VERKETTEN()</code> können Inhalte von Spalten verknüpft und durch zusätzliche Texte ergänzt werden. Beim Erstellen von HTML-Markup aus Tabelleninhalten kann das sehr hilfreich sein.
+</p>
+
+<h3>Beispiel ColorBrewer Farbpaletten</h3>
+<ul>
+    <li>Homepage ansteuern unter <a href="http://colorbrewer2.org/">http://colorbrewer2.org/</a></li>
+    <li>downloads / Download Spreadsheet wählen -&gt; <a href="http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_RGB.html">ColorBrewer_RGB.html</a></li>
+    <li>Tabelle <a href="http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_all_schemes_RGBonly3.XLS">ColorBrewer_all_schemes_RGBonly3.XLS</a>  downloaden und in LibreOffice bearbeiten</li>
+    <li>RGB-Werte in den Spalten G2,H2,I2 in Zelle K2 zum Markup einer Tabellenzelle verketten
+        <pre>=VERKETTEN("&lt;td style='background-color:rgb(";G2;",";H2;",";I2;")'&gt;&amp;nbsp;&lt;/td&gt;")</pre>
+    </li>
+    <li>Formel nach unten ziehen und damit für alle Farben verfügbar machen</li>
+    <li>Markup für das Tabellengerüst erstellen und dann die Zellen hinzufügen</li>
+    <li>Am Beispiel von Blues sequentiell (9 Farben) entsteht folgender Markup:
+        <pre>
+&lt;table style="width:400px;height:30px;"&gt;
+    &lt;tr&gt;
+        &lt;td style='background-color:rgb(247,251,255)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(222,235,247)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(198,219,239)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(158,202,225)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(107,174,214)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(66,146,198)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(33,113,181)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(8,81,156)'&gt;&amp;nbsp;&lt;/td&gt;
+        &lt;td style='background-color:rgb(8,48,107)'&gt;&amp;nbsp;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+    <p>... und so sieht es aus:</p>
+        <table style="width:400px;height:30px;">
+        <tr>
+            <td style='background-color:rgb(247,251,255)'>&nbsp;</td>
+            <td style='background-color:rgb(222,235,247)'>&nbsp;</td>
+            <td style='background-color:rgb(198,219,239)'>&nbsp;</td>
+            <td style='background-color:rgb(158,202,225)'>&nbsp;</td>
+            <td style='background-color:rgb(107,174,214)'>&nbsp;</td>
+            <td style='background-color:rgb(66,146,198)'>&nbsp;</td>
+            <td style='background-color:rgb(33,113,181)'>&nbsp;</td>
+            <td style='background-color:rgb(8,81,156)'>&nbsp;</td>
+            <td style='background-color:rgb(8,48,107)'>&nbsp;</td>
+        </tr>
+        </table>
+    </li>
+</ul>
+
+</article>
+
+</main>
+
+</body>
+</html>

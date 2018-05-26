@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Web mapping Kurs: Einfache HTML Formatierungen II (Formulare)</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main>
+
+<h1>Einfache HTML Formatierungen II (Formulare)</h1>
+
+<table class="docs">
+
+    <tr>
+        <td>
+            <form method="GET" action="https://www.google.at/search">
+                <label for="q">Keyword:</label>
+                <input type="text" id="q" name="q" size="5" />
+                <input type="submit" value="Suchen" />
+            </form>
+        </td>
+        <td>
+            <pre>
+&lt;form method="GET" action="https://www.google.at/search"&gt;
+    &lt;label for="q"&gt;Keyword:&lt;/label&gt;
+    &lt;input type="text" id="q" name="q" size="5" /&gt;
+    &lt;input type="submit" value="Suchen" /&gt;
+&lt;/form>
+</pre>
+            form definiert den Formularbereich, method bestimmt die Art der Anfrage (GET oder POST) und action enthält das Skript das auszuführen ist. Über label kann Text mit einem Formularfeld verknüpft werden - die Attribute for beim label und id beim input-Element stellen dabei diesen Zusammenhang her.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="text" name="firstname" placeholder="Vorname" />
+        </td>
+        <td>
+            <pre>&lt;input type="text" name="firstname" placeholder="Vorname" /&gt;</pre>
+            Texteingabefeld mit dem Namen firstname und einem Platzhaltertext der beim Ausfüllen des Feldes verschwindet.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="password" name="secret" value="Geheimzahl" />
+        </td>
+        <td>
+            <pre>&lt;input type="password" name="secret" value="Geheimzahl" /&gt;</pre>
+            Passworteingabefeld mit maskierten Zeichen. Das Kopieren des Passworts ist nicht möglich.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <textarea name="abstract" rows="5" cols="30">Abstract:</textarea>
+        </td>
+        <td>
+            <pre>&lt;textarea name="abstract" rows="5" cols="30"&gt;Abstract:&lt;/textarea&gt;</pre>
+            Texteingabefeld für mehrzeilige Texte. Das Attribut rows bestimmt die Anzahl an Reihen, cols (wie columns) die Anzahl an Spalten. Der Text zwischen den beiden textarea-Tags wird in das Eingabefeld geschrieben.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="checkbox" name="confirm" /> gelesen<br/>
+            <input type="checkbox" name="confirm" checked /> verstanden
+        </td>
+        <td>
+            <pre>&lt;input type="checkbox" name="confirm" /&gt; gelesen
+&lt;input type="checkbox" name="confirm" checked /&gt; verstanden</pre>
+            Checkbox zum Ankreuzen. Sobald das Attribut checked vorhanden ist, wird ein Häckchen gesetzt.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="radio" name="gender" value="female" /> weiblich
+            <input type="radio" name="gender" value="male" /> männlich
+        </td>
+        <td>
+            <pre>&lt;input type="radio" name="gender" value="female" /&gt; weiblich
+&lt;input type="radio" name="gender" value="male" /&gt; männlich
+</pre>
+            Checkboxen mit entweder/oder Auswahlmöglichkeit. Die beiden (oder auch mehrere) Knöpfe müssen das gleiche name-Attribut haben. Vorselektion wieder mit checked.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <select name="district">
+                <option value="1701">Innsbruck</option>
+                <option value="1702">Imst</option>
+                <option value="1703">Innsbruck Land</option>
+                <option value="1704">Kitzbühel</option>
+                <option value="1705" selected>Kufstein</option>
+                <option value="1706">Landeck</option>
+                <option value="1707">Lienz</option>
+                <option value="1708">Reute</option>
+                <option value="1709">Schwaz</option>
+            </select>
+        </td>
+        <td>
+            <pre>
+&lt;select name="district"&gt;
+    &lt;option value="1701"&gt;Innsbruck&lt;/option>
+    &lt;option value="1702"&gt;Imst&lt;/option>
+    &lt;option value="1703"&gt;Innsbruck Land&lt;/option>
+    &lt;option value="1704"&gt;Kitzbühel&lt;/option>
+    &lt;option value="1705" selected&gt;Kufstein&lt;/option>
+    &lt;option value="1706"&gt;Landeck&lt;/option>
+    &lt;option value="1707"&gt;Lienz&lt;/option>
+    &lt;option value="1708"&gt;Reute&lt;/option>
+    &lt;option value="1709"&gt;Schwaz&lt;/option>
+&lt;/select&gt;</pre>
+            Auswahlliste mit neun Möglichkeiten. Über select wird die Auswahlliste definiert, option-Elemente enthalten die Einträge der Liste und bestehen aus einem value-Attribut sowie dem Labeltext zwischen den option-Tags. Vorselektion eines Eintrags über das Attribut selected.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <select name="district" multiple size="10">
+                <optgroup label="Bezirk(e) auswählen">
+                    <option value="1701" selected>Innsbruck</option>
+                    <option value="1702">Imst</option>
+                    <option value="1703">Innsbruck Land</option>
+                    <option value="1704">Kitzbühel</option>
+                    <option value="1705">Kufstein</option>
+                    <option value="1706">Landeck</option>
+                    <option value="1707">Lienz</option>
+                    <option value="1708">Reute</option>
+                    <option value="1709">Schwaz</option>
+                </optgroup>
+            </select>
+        </td>
+        <td>
+            <pre>&lt;select name="district" multiple size="10"&gt;
+    &lt;optgroup label="Bezirk(e) auswählen"&gt;
+        &lt;option value="1701" selected&gt;Innsbruck&lt;/option&gt;
+        &lt;option value="1702"&gt;Imst&lt;/option&gt;
+        &lt;option value="1703"&gt;Innsbruck Land&lt;/option&gt;
+        &lt;option value="1704"&gt;Kitzbühel&lt;/option&gt;
+        &lt;option value="1705"&gt;Kufstein&lt;/option&gt;
+        &lt;option value="1706"&gt;Landeck&lt;/option&gt;
+        &lt;option value="1707"&gt;Lienz&lt;/option&gt;
+        &lt;option value="1708"&gt;Reute&lt;/option&gt;
+        &lt;option value="1709"&gt;Schwaz&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;</pre>
+            Über das Attribut size aufgeklappte Auswahlliste mit Mehrfachselektion über das Attribut multiple. Die Einträge sind durch ein optgroup-Element gruppiert dessen label-Attribut den Titel der Gruppe bestimmt.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="range" min="0" max="100" step="10" value="30"/>
+        </td>
+        <td>
+            <pre>&lt;input type="range" min="0" max="100" step="10" value="30" /&gt;</pre>
+            Einfacher Slider mit dem Wertebereich 0 (min) bis 100 (max), einer Schrittweite beim Ziehen von 10 (step) und dem vordefinierten Wert 30.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <progress max="100" value="75">75 %</progress>
+        </td>
+        <td>
+            <pre>&lt;progress max="100" value="75"&gt;75 %&lt;/progress&gt;</pre>
+            Fortschrittsbalken mit dem Naximalwert 100, 75 davon sind schon erreicht.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter>
+        </td>
+        <td>
+            <pre>&lt;meter min="0" max="100" value="75" low="33" high="66" optimum="50"&gt;</pre>
+            Meter-Element mit Minimum (min), Maximum (max) und voreingestelltem Wert (value). Durch die attribute low, high und optimum werden Wertebereiche definiert. <span style="color:maroon;font-weight:bold;">TODO:</span> und wie wird das gestylt?
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="hidden" name="user" value="geo" />
+        </td>
+        <td>
+            <pre>&lt;input type="hidden" name="user" value="geo" /&gt;</pre>
+            Verstecktes Formularfeld mit Namen (name) und Wert (value) die beim Abschicken des Formulars an das Skript mitgeschickt werden.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <fieldset>
+                <legend>Benutzer-Login</legend>
+                <input type="text" id="user" name="user" size="10" />
+                <label for="user"> Name</label>
+                <br />
+                <input type="password" id="pass" name="pass" size="10" />
+                <label for="pass"> Passwort</label>
+            </fieldset>
+        </td>
+        <td>
+            <pre>&lt;fieldset&gt;
+    &lt;legend&gt;Benutzer-Login&lt;/legend&gt;
+    &lt;input type="text" id="user" name="user" size="10" /&gt;
+    &lt;label for="user"&gt; Name
+    &lt;br /&gt;
+    &lt;input type="password" id="pass" name="pass" size="10" /&gt;
+    &lt;label for="pass"&gt; Passwort
+&lt;/fieldset&gt;</pre>
+            Grafische und inhaltliche Gruppierung von Formularfeldern über das Attribut fieldset mit einem legend-Attribut.
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="button" value="Button" />
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </td>
+        <td>
+            <pre>&lt;input type="button" value="Button" /&gt;
+&lt;input type="submit" value="Submit" /&gt;
+&lt;input type="reset" value="Reset" /&gt;</pre>
+            Drei verschieden Schaltflächen deren type-Attribut die Art der Schaltfläche bestimmt: button erzeugt eine Schaltfläche ohne vordefiniertes Verhalten, submit dient zum Abschicken des Formulars und reset zum Zurücksetzen des Formulars auf die beim Aufruf voreingestellten Werte.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;">
+            Testen ...
+        </td>
+        <td>
+            <pre>&lt;form method="POST" action="http://geographie.uibk.ac.at/app/echo"&gt;
+    &lt;input type="text" name="test" value="ein Test" /&gt;
+    &lt;input type="submit" value="Abschicken" /&gt;
+&lt;/form&gt;</pre>
+        </td>
+    </tr>
+
+<!--
+    <tr>
+        <td>
+            beispiel
+        </td>
+        <td>
+            <pre></pre>
+            TODO: Beschreibung
+        </td>
+    </tr>
+-->
+
+<!--
+Helferlein beim Ersetzen der Kleiner- und Größerzeichen - Originalmarkup in einer Datei xxx.txt abspeichern und dann:
+
+perl -pi.bak -e "s/\</\&lt;/" xxx.txt ;perl -pi.bak -e "s/\>/\&gt;/" xxx.txt; rm xxx.txt.bak
+
+-->
+</table>
+
+</main>
+
+<footer>
+<p style="text-align:center;font-size:0.9em;">716409 VU/3 Geoinformatik: Web mapping, Sommersemster 2016, Klaus Förster &amp; Bernd Öggl</p>
+</footer>
+
+</body>
+</html>

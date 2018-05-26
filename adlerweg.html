@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Adlerweg Etappen mit Panoramio Fotots, Wikipedia Artikeln und interaktivem Höhenprofil</title>
+
+    <!-- Stylesheet und Javascript für Leaflet -->
+    <link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+    <script src="./js/leaflet/leaflet.js"></script>
+
+    <!-- Etappen eins bis drei als Javascript GeoJSON Objekte -->
+    <script src="./geojson/AdlerwegEtappe01.geojson.js"></script>
+    <script src="./geojson/AdlerwegEtappe02.geojson.js"></script>
+    <script src="./geojson/AdlerwegEtappe03.geojson.js"></script>
+
+    <!-- Stylesheet und Javascripts für Leaflet.Elevation -->
+    <link rel="stylesheet" href="./js/leaflet.elevation/leaflet.elevation-0.0.4.css" />
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="./js/leaflet.elevation/leaflet.elevation-0.0.4.min.js"></script>
+
+    <!-- eigenes Skript zur Visualisierung -->
+    <script src="adlerweg.js"></script>
+
+</head>
+
+<body>
+    <h1>Adlerweg Etappen Visualisierung</h1>
+    <div id="adlermap" style="width:900px;height:600px"></div>
+    <h3>Links</h3>
+    <ul>
+        <li><a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/adlerweg-tirol/">Adlerweg Tirol Open data Download</a></li>
+        <li><a href="http://www.tirol.at/reisefuehrer/sport/wandern/adlerweg">Adlerweg: Weitwandern auf den Schwingen des Adlers</a></li>
+        <li><a href="http://mapbox.github.io/togeojson/">toGeoJSON - convert gpx to .geojson</a></li>
+        <li><a href="http://www.panoramio.com/api/data/api.html">Panoramio API - Display photos from Panoramio on your own website</a></li>
+        <li><a href="http://www.geonames.org/export/wikipedia-webservice.html">GeoNames Wikipedia Webservice</a></li>
+        <li><a href="https://github.com/MrMufflon/Leaflet.Elevation">Leaflet.Elevation Plugin</a></li>
+    </ul>
+</body>
+
+</html>

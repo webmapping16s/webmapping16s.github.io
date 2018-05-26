@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Web mapping Kurs: Einfache CSS Formatierungen</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main>
+
+<h1>Einfache CSS Formatierungen</h1>
+
+<table class="docs">
+
+    <tr>
+        <td style="vertical-align:top;">
+        <strong>Syntax</strong>
+<pre>
+h1 {
+    color: green;
+}</pre>
+        </td>
+        <td>
+            <table>
+            <tr>
+            <td>rule</td><td>der ganze Ausdruck von h1 bis zur letzten geschwungenen Klammer</td>
+            </tr>
+            <tr>
+            <td>selector</td><td>welches Element soll referenziert werden (h1)</td>
+            </tr>
+            <tr>
+            <td>declaration</td><td>alles zwischen den geschwungenen Klammern</td>
+            </tr>
+            <tr>
+            <td>property</td><td>was soll gestylt werden (color)</td>
+            </tr>
+            <tr>
+            <td>value</td><td>wie soll gestylt werden (green).</td>
+            </tr>
+            </table>
+            <p>Ein Strichpunkt trennt beliebig viele property/value Paare
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;">
+            Einbau im &lt;head&gt;
+        </td>
+        <td>
+            <pre>
+&lt;head&gt;
+    &lt;style&gt;
+        h1 {
+            color: green;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;">
+            Einbau als Attribut
+        </td>
+        <td>
+            <pre>
+&lt;h1 style="color:green;"&gt;
+</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;">
+            Einbau als .css Datei
+        </td>
+        <td>
+            <ol>
+                <li>Textdatei mit der Endung .css erstellen</li>
+                <li>CSS-Regeln hinzufügen, <code>/* Kommentare sehen so aus */</code></li>
+                <li>im HTML &lt;head /&gt; Bereich als &lt;link /&gt; Element referenzieren
+                    <pre>&lt;link rel="stylesheet" href="styles.css"&gt;&lt;/link&gt;</pre>
+                </li>
+            </ol>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;">
+            <strong>Selektoren</strong>
+        </td>
+        <td>
+            <table>
+            <tr>
+                <td>h1</td>
+                <td>referenziert alle h1 Elemente</td>
+            </tr>
+            <tr>
+                <td>.right</td>
+                <td>referenziert alle Elemente mit einem Attribut <code>class="right"</code></td>
+            </tr>
+            <tr>
+                <td>#help</td>
+                <td>referenziert das Element mit dem Attribut <code>id="help"</code></td>
+            </tr>
+            <tr>
+                <td style="vertical-align:top;">a:link</td>
+                <td>ermöglicht das Stylen von Links. Neben a:link gibt es auch a:visited für besuchte Links und a:hover für Mouseover-Effekte bei Links</td>
+            </tr>
+            </table>
+            <p>Selektoren können auch kombiniert werden:</p>
+            <table>
+            <tr>
+                <td>h1.right</td>
+                <td>alle h1 Elemente mit <code>class="right"</code></td>
+            </tr>
+            <tr>
+                <td>h1,h2,h3</td>
+                <td>alle h1, h2 und h3 Elemente</td>
+            </tr>
+            <tr>
+                <td>article p</td>
+                <td>alle p Elemente innerhalb eines article Elements</td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top;">
+            <strong>Farben</strong>
+        </td>
+        <td>
+            <pre>
+color: #00ff00;                 /* hexadezimal */
+color: lime;                    /* benannt */
+color: rgb(0,255,0);            /* red-green-blue */
+color: rgba(0,255,0,1.0);       /* rgb mit Transparenz */
+color: hsl(120,100%,50%);       /* hue-saturation-lightness */
+color: hsla(120,100%,50%;1.0);  /* hsl mit Transparenz */
+</pre>
+            <p>Farben werden über color und background-color festgelegt. Die Werte bei Transparenzen liegen zwischen 0.0 für durchsichtig und 1.0 für opaque. Farbnamen und mehr gibt es hier: <a href="https://drafts.csswg.org/css-color-3/#colorunits">https://drafts.csswg.org/css-color-3/#colorunits</a>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top">
+            <strong>Styling für Text</strong>
+        </td>
+        <td>
+            <table>
+            <tr>
+            <td>font-style</td><td>normal, italic</td>
+            </tr>
+            <tr>
+            <td>font-weight</td><td>normal, bold, lighter, bolder, 100, 200 ... 900</td>
+            </tr>
+            <tr>
+            <td>font-size</td><td>12px, 90%, 0.8em, 0.8rem, small, medium, large</td>
+            </tr>
+            <tr>
+            <td>font-family</td><td>serif, sans-serif, monospace</td>
+            </tr>
+            <tr>
+            <td>font-family (Alternativen)</td><td>"Times New Roman", Georgia, serif</td>
+            </tr>
+            <tr>
+            <td>text-decoration</td><td>none, underline</td>
+            </tr>
+            <tr>
+            <td>line-height</td><td>normal, 2em, 2.0</td>
+            </tr>
+            </table>
+            <p>
+            Die Größe der font-size bei em bezieht sich auf die Größe des übergeordneten Fonts, bei rem auf die Größe des ursprünglichen Fonts für die HTML-Seite
+            </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align: top;">
+            <strong>CSS Box-model</strong>
+        </td>
+        <td>
+            <svg width="500" height="360">
+                <rect x="0" y="0" width="500" height="360" fill="#ccc"/>
+                <rect x="40" y="40" width="420" height="280" fill="#aaa"/>
+                <rect x="60" y="60" width="380" height="240" fill="#eee"/>
+                <rect x="100" y="100" width="300" height="160" fill="#fff"/>
+
+                <g transform="translate(10,20)">
+                    <text x="0" y="0">margin</text>
+                    <text x="40" y="35">border</text>
+                    <text x="60" y="60">padding</text>
+                    <text x="100" y="100">content</text>
+                </g>
+
+                <g  transform="translate(100,275)">
+                    <path d="M 0 0 h 120 M 180 0 h 120" stroke="black" stroke-width="0.5"/>
+                    <text x="150" y="5" text-anchor="middle">width</text>
+                </g>
+                <g  transform="translate(415,260) rotate(-90)">
+                    <path d="M 0 0 h 50 M 110 0 h 50" stroke="black" stroke-width="0.5"/>
+                    <text x="80" y="5" text-anchor="middle">height</text>
+                </g>
+            </svg>
+            <p>Für margin, border und padding gibt es auch die Varianten -top, -right, -bottom, -left.
+        </td>
+    </tr>
+
+    <tr class="newpage">
+        <td style="vertical-align: top;">
+            <strong>Rahmen</strong>
+        </td>
+        <td>
+            <pre>
+border: 1px solid black;
+border-radius: 10px;
+box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);</pre>
+<p>Bei border müssen Breite, Typ und Farbe angegeben werden. Für abgerundete Ecken kommt border-radius zum Einsatz. Schatten setzen sich aus Offsets, Farben, <em>blur</em> und Transparenz zusammen - siehe <a href="http://css3gen.com/box-shadow/">http://css3gen.com/box-shadow/</a> (CSS3 Box Shadow Generator)
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top">
+            <strong>Ausrichten</strong>
+        </td>
+        <td>
+            <table>
+            <tr>
+            <td>text-align</td><td>left, right, center, justify</td>
+            </tr>
+            <tr>
+            <td>vertical-align</td><td>bottom, middle, top</td>
+            </tr>
+            <tr>
+            <td>float</td><td>left, right</td>
+            </tr>
+            <tr>
+            <td>clear</td><td>left, right, both</td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top">
+            <strong>Aufzählungen</strong>
+        </td>
+        <td>
+            <table>
+            <tr>
+            <td>list-style</td><td>disc, circle, square</td><td>bei &lt;ul /&gt;</td>
+            </tr>
+            <tr>
+            <td>list-style</td><td>decimal, lower-roman, upper-roman, lower-latin, upper-latin</td><td>bei &lt;ol /&gt;</td>
+            </tr>
+            </table>
+            <p>Zum Festlegen des Startpunktes einer Aufzälung dient das Attribut start beim ol-Element. Über start="3" beginnt damit eine nummerierte Liste bei 3, eine Liste mit lower-roman bei iii und eine Liste mit upper-latin bei C.
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align:top">
+            <strong>Sichtbarkeit</strong>
+        </td>
+        <td>
+            <table>
+            <tr>
+            <td>display</td><td>none, inline, block, ...</td>
+            </tr>
+            <tr>
+            <td>opacity</td><td>0.0 bis 1.0</td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td style="vertical-align: top;">
+            <strong>@media</strong>
+        </td>
+        <td>
+            <pre>
+@media print {
+    #nav-area {
+        display: none;
+    }
+}
+</pre>
+            <p>Über @media kann die Gültigkeit von Styleregeln eingeschränkt werden. In diesem Fall wird beim Ausdrucken der HTML-Seite der Navigationsbereich ausgeblendet.</p>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td style="vertical-align: top;">
+            <h3>Links zum Thema</h3>
+        </td>
+        <td>
+<ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">https://developer.mozilla.org/en-US/docs/Web/CSS</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started">https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">https://developer.mozilla.org/en-US/docs/Web/CSS/Reference</a></li>
+    <li><a href="https://www.w3.org/Style/CSS/">https://www.w3.org/Style/CSS/</a></li>
+    <li><a href="http://codebeautify.org/css-beautify-minify">http://codebeautify.org/css-beautify-minify</a></li>
+</ul>
+        </td>
+    </tr>
+
+<!--
+    <tr>
+        <td>
+            beispiel
+        </td>
+        <td>
+            <pre></pre>
+            beschreibung
+        </td>
+    </tr>
+-->
+
+</table>
+
+</main>
+
+<footer>
+<p style="text-align:center;font-size:0.9em;">716409 VU/3 Geoinformatik: Web mapping, Sommersemster 2016, Klaus Förster &amp; Bernd Öggl</p>
+</footer>
+
+</body>
+</html>

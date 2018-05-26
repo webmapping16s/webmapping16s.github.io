@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Leaflet-hash plugin map</title>
+<link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+<script src="./js/leaflet/leaflet.js"></script>
+<script src="./js/leaflet.hash/leaflet-hash.js"></script>
+
+<script>
+    window.onload = function () {
+        var layers = { // http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
+            geolandbasemap : L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapoverlay : L.tileLayer("http://{s}.wien.gv.at/basemap/bmapoverlay/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmapgrau : L.tileLayer("http://{s}.wien.gv.at/basemap/bmapgrau/normal/google3857/{z}/{y}/{x}.png", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaphidpi : L.tileLayer("http://{s}.wien.gv.at/basemap/bmaphidpi/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            }),
+            bmaporthofoto30cm : L.tileLayer("http://{s}.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg", {
+                subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+                attribution : 'Datenquelle: <a href="http://www.basemap.at/">basemap.at</a>'
+            })
+        };
+
+        var map = L.map('map', {
+            layers : [layers.geolandbasemap],
+            center : [47.208611, 11.460556],
+            zoom : 12
+        });
+
+        L.control.layers({
+            "Geoland Basemap" : layers.geolandbasemap,
+            "Geoland Basemap Overlay" : layers.bmapoverlay,
+            "Geoland Basemap Grau": layers.bmapgrau,
+            "Geoland Basemap High DPI" : layers.bmaphidpi,
+            "Geoland Basemap Orthofoto" : layers.bmaporthofoto30cm
+        }).addTo(map)
+
+        L.control.scale({
+            'imperial': false
+        }).addTo(map);
+
+        var marker = L.marker([47.208611, 11.460556]).addTo(map);
+        marker.bindPopup('<h2>Blick vom Patscherkofel!</h2><img style="width:300px;" src="https://apps.tirol.gv.at/luft/patscherkofel.jpg" />')
+
+        // activate Leaflet-hash
+        var hash = new L.Hash(map);
+
+    };
+</script>
+</head>
+<body>
+    <div id="map" style="width:900px;height:600px"></div>
+</body>
+
+<h3>Links</h3>
+<ul>
+<li><a href="https://github.com/mlevans/leaflet-hash">Leaflet-hash Plugin</a></li>
+</ul>
+</html>

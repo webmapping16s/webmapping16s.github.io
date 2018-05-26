@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nationalpark Hohe Tauern Points of interest - Piktogramme</title>
+<link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+<script src="./js/leaflet/leaflet.js"></script>
+<script src="./geojson/nphtt_pois.geojson.js"></script>
+
+</head>
+<body>
+    <h1>Nationalpark Hohe Tauern Points of interest - Piktogramme</h1>
+    <div id="legende" style="float:right;"></div>
+    <div id="map" style="width:900px;height:600px;"></div>
+    <select name="poi" id="pulldown" style="margin-top:10px;">
+        <option value="" selected>--- Point of interest auswählen --</option>
+    </select>
+    <script>
+    window.onload = function () {
+
+        var map = L.map('map');
+
+        // Legendenobjekt mit Bezeichnungen nach Typnummern
+        var legendLabels = {
+            10 : 'NP-Zentrum / Ausstellung',
+            11 : 'NP-Infostelle / Infopunkt',
+            12 : 'NP-Themenweg',
+            13 : 'Natur-Schauplatz',
+            14 : 'Forschungseinrichtung',
+            20 : 'Alpengasthof',
+            21 : 'Parkplatz',
+            22 : 'Taxizubringer',
+            23 : 'Mautstraße',
+            24 : 'Bergbahn',
+            25 : 'Kutschenzubringer',
+            26 : 'Hütte mit Übernachtung',
+            27 : 'Hütte ohne Übernachtung',
+            28 : 'Biwak / Selbstversorgerhütte',
+            29 : 'Lehrweg (nicht NP)',
+            30 : 'Sehenswürdigkeit (Schloss, Burg)',
+            31 : 'Museum',
+            32 : 'Mountainbike',
+            33 : 'Wasserfall',
+            34 : 'Wildpark',
+            35 : 'Bergwerk',
+            36 : 'Mühle',
+            37 : 'Aussichtsplattform',
+            40 : 'TVB Infobüro',
+        };
+
+        // Basis layer hinzufügen
+        L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+            subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+            attribution : 'Datenquellen: <a href="http://www.basemap.at/">basemap.at</a>, <a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/">Land Tirol</a>'
+        }).addTo(map);
+
+        // Maßstabsleiste hinzufügen
+        L.control.scale({
+            'imperial': false
+        }).addTo(map);
+
+        // GeoJSON Daten nach Attribut NAME sortieren
+        window.POIS_GEOJSON.features.sort(function (a, b) {
+            if (a.properties.NAME < b.properties.NAME) {
+                return -1;
+            } else if (a.properties.NAME > b.properties.NAME) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        // Marker mit Pop ups über GeoJSON zur Karte hinzufügen
+        var pois = L.geoJson(window.POIS_GEOJSON, {
+            onEachFeature: function (feature, layer) {
+                //console.log(feature);
+                var icon = L.icon();
+                var description = feature.properties.NAME;
+                if (feature.properties.SEEHOEHE > 0 && feature.properties.SEEHOEHE !== 9999) {
+                    description += ' (' + feature.properties.SEEHOEHE + 'm)';
+                }
+                layer.bindPopup(description);
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon : L.icon({
+                        iconSize : [36,36],
+                        iconAnchor: [18,18],
+                        popupAnchor : [0, -20],
+                        iconUrl: 'icons/nphtt_' + feature.properties.POI_TYP + '.png'
+                    })
+                });
+            }
+        }).addTo(map);
+
+        // Ausschnitt setzen
+        map.fitBounds(pois.getBounds());
+
+        // Legenden DIV finden und mit Icons samt Beschriftung befüllen
+        legend_div = document.getElementById("legende");
+        for (poi_typ in legendLabels) {
+            legend_div.innerHTML += '<img src="icons/nphtt_' + poi_typ + '.png" style="vertical-align:middle;padding-bottom:3px;" /> ';
+            legend_div.innerHTML += legendLabels[poi_typ] + '<br/>';
+        }
+
+        // Pulldown Menü DIV finden und Auswahleinträge für die Icons hinzufügen
+        var pulldownMenu = document.getElementById("pulldown");
+        var markers = pois.getLayers();
+        for (var i = 0; i < markers.length; i += 1) {
+            option = document.createElement("option");
+            option.value = i;
+            option.text = markers[i]._popup.getContent();
+            pulldownMenu.appendChild(option);
+        }
+
+        // auf Änderungen im Pulldown Menü reagieren
+        pulldownMenu.onchange = function(event) {
+            var i = pulldownMenu.options[pulldownMenu.options.selectedIndex].value;
+            var icon = pois.getLayers()[i];
+            map.setView(icon.getLatLng(), 14);
+            icon.openPopup();
+        };
+    };
+    </script>
+
+    <h3>Links</h3>
+    <ul>
+        <li>Datenquelle: <a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/">Nationalpark Hohe Tauern Points of interest</a> (<a href="https://gis.tirol.gv.at/ogd/sport_freizeit/NPHT/nphtt_pointsofinterest_wgs84_shp.zip">shp</a>)</li>
+        <li><a href="https://www.mapbox.com/maki-icons/">Maki Icons | By Mapbox</a></li>
+    </ul>
+
+</body>
+</html>

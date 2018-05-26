@@ -1,0 +1,34 @@
+/*****
+*
+* common stylesheet for docs
+*
+*****/
+
+body {
+    width: 900px;
+    margin: auto;
+}
+.docs tr {
+    vertical-align: middle;
+}
+.docs td {
+    border: 1px solid #aaa;
+    padding: 5px;
+}
+.docs pre, code {
+    font-size: 130%;
+}
+
+article {
+    border: 1px solid silver;
+    padding: 5px;
+}
+
+@media print {
+    body {
+        width: 100%;
+    }
+    .newpage {
+        page-break-before: always;
+    }
+}

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Web mapping Kurs: Einfache HTML Formatierungen I</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<main>
+
+<h1>Einfache HTML Formatierungen I</h1>
+
+<table class="docs">
+    <tr>
+        <td>
+            <h1>Überschrift&nbsp;1</h1>
+        </td>
+        <td>
+            <pre>&lt;h1&gt;Überschrift 1&lt;/h1&gt;</pre>
+            h wie "header". Geht auch mit h2,h3,h4,h5,h6 - wird dann entsprechend kleiner. Header verrgößern automatisch den Abstand zur nächsten Zeile.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>Das ist ein Absatz</p>
+        </td>
+        <td>
+            <pre>&lt;p&gt;Das ist ein Absatz&lt;/p&gt;</pre>
+            p wie "paragraph". Absätze vergrößern den Abstand zur nächsten Zeile.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Zeile 1<br />Zeile 2
+        </td>
+        <td>
+            <pre>Zeile 1&lt;br/&gt;Zeile 2</pre>
+            br wie "break". Text wird in der nächsten Zeile ohne zusätzlichen Abstand fortgeführt. Bei br gibt es keinen Endtag, deshalb die kompakte Schreibweise mit dem Slash vor dem Größerzeichen.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <hr/>
+        </td>
+        <td>
+            <pre>&lt;hr/&gt;</pre>
+            hr wie "horizontal rule". Bei hr gibt es keinen Endtag, deshalb die kompakte Schreibweise mit dem Slash vor dem Größerzeichen.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Aufzählung:
+            <ul>
+                <li>Listenelement 1</li>
+                <li>Listenelement 2</li>
+            </ul>
+        </td>
+        <td>
+            <pre>
+&lt;ul&gt;
+    &lt;li&gt;Listenelement 1&lt;/li&gt;
+    &lt;li&gt;Listenelement 2&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+            ul wie "unordered list", li wie "list item"
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Aufzählung (nummeriert):
+            <ol>
+                <li>Einleitung</li>
+                <li>Hauptteil</li>
+            </ol>
+        </td>
+        <td>
+            <pre>
+&lt;ol&gt;
+    &lt;li&gt;Einleitung&lt;/li&gt;
+    &lt;li&gt;Hauptteil&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+            ol wie "ordered list", li wie "list item"
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <strong>fett</strong> / <em>kursiv</em>
+        </td>
+        <td>
+            <pre>&lt;strong&gt;fett&lt;/strong&gt; / &lt;em&gt;kursiv&lt;/em&gt;</pre>
+            em wie "emphasis"
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <pre>
+vorformatierter Text
+mit Zeilenumbruch
+   und Leerzeichen
+</pre>
+        </td>
+        <td>
+            <pre>
+&lt;pre&gt;
+vorformatierter Text
+mit Zeilenumbruch
+   und Leerzeichen
+&lt;/pre&gt;</pre>
+            pre wie "preformatted". Zeilenumbrüche und Leerzeilen werden berücksichtigt. Alle Buchstaben haben die gleiche Breite.
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            Kommentare
+        </td>
+        <td>
+            <pre>&lt;!-- das ist ein Kommentar --&gt;</pre>
+            alles zwischen &lt;!--  und  --&gt; wird nicht angezeigt. Kommentare können sich auch über mehrere Zeilen erstrecken und HTML-Code beinhalten.
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            Spezielle Zeichen
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>&amp;lt;</td><td>&lt;</td><td>Kleinerzeichen</td>
+                </tr>
+                <tr>
+                    <td>&amp;gt;</td><td>&gt;</td><td>Größerzeichen</td>
+                </tr>
+                <tr>
+                    <td>&amp;amp;</td><td>&amp;</td><td>Ampersand (kaufmännisches Und)</td>
+                </tr>
+                <tr>
+                    <td>&amp;nbsp;</td><td>&nbsp;</td><td>geschütztes Leerzeichen</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="https://www.uibk.ac.at/geographie/">Link zur Geo-Homepage</a>
+        </td>
+        <td>
+            <pre>&lt;a href="https://www.uibk.ac.at/geographie/"&gt;Link zur Geo-Homepage&lt;/a&gt;</pre>
+            a wie "anchor", href wie "hyperlink reference". Der Link wird im Attribut href festgelegt. Der Linktext steht zwischen Start- und Endtag.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="mailto:klaus.foerster@uibk.ac.at">E-Mail Link</a>
+        </td>
+        <td>
+            <pre>&lt;a mailto:klaus.foerster@uibk.ac.at&gt;E-Mail Link&lt;/a&gt;</pre>
+            statt https:// wird mailto: beim href Attribut verwendet.
+        </td>
+    </tr>
+
+    <!-- new page -->
+
+    <tr class="newpage">
+        <td>
+            <img src="https://www.uibk.ac.at/geographie/icons/geologo.jpg" alt="Logo der Geographie Innsbruck" title="Logo der Geographie Innsbruck" />
+        </td>
+        <td>
+            <pre>
+&lt;img src="https://www.uibk.ac.at/geographie/icons/geologo.jpg"
+     alt="Logo der Geographie Innsbruck" /&gt;
+</pre>
+            img wie "image", src wie "source", alt wie "alternative". Das Bild wird im Attribut src festgelegt. Das Attribut alt enthält eine Kurzbeschreibung des Bildes, muss angegeben werden und wird von Screenreadern sprachlich wiedergegeben. Bei img gibt es keinen Endtag, deshalb die kompakte Schreibweise mit dem Slash vor dem Größerzeichen.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <figure>
+                <img src="https://www.uibk.ac.at/geographie/icons/unilogo.jpg" alt="Unilogo" />
+                <figcaption>Logo der Universität</figcaption>
+            </figure>
+        </td>
+        <td>
+            <pre>
+&lt;figure&gt;
+    &lt;img src="https://www.uibk.ac.at/geographie/icons/unilogo.jpg" alt="Unilogo" /&gt;
+    &lt;figcaption>Logo der Universität&lt;/figcaption&gt;
+&lt;/figure&gt;
+</pre>
+            Eine Abbildung wird über figure vordefiniert. Mit img kann ein Bild eingebaut werden und figcaption liefert dazu die Bildunterschrift. Abbildungen werden automatisch vom linken Rand eingerückt. Die Bildunterschrift beginnt in einer neuen Zeile.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <td>1701</td>
+                    <td>Innsbruck</td>
+                </tr>
+                <tr>
+                    <td>1702</td>
+                    <td>Imst</td>
+                </tr>
+                <tr>
+                    <td>1703</td>
+                    <td>Innsbruck Land</td>
+                </tr>
+                <tr>
+                    <td>1704</td>
+                    <td>Kitzbühel</td>
+                </tr>
+                <tr>
+                    <td>1705</td>
+                    <td>Kufstein</td>
+                </tr>
+                <tr>
+                    <td>1706</td>
+                    <td>Landeck</td>
+                </tr>
+                <tr>
+                    <td>1707</td>
+                    <td>Lienz</td>
+                </tr>
+                <tr>
+                    <td>1708</td>
+                    <td>Reute</td>
+                </tr>
+                <tr>
+                    <td>1709</td>
+                    <td>Schwaz</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <pre>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Id&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;1701&lt;/td&gt;
+        &lt;td&gt;Innsbruck&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+            tr wie "table row", th wie "table header", td wie "table data". Spaltenüberschriften über th werden automatisch fett geschrieben und zentriert. Verbinden von Zellen horizontal mit dem Attribut colspan (z.B. colspan="2"). Verbinden von Zellen vertikal über rowspan (z.B. rowspan="3"). Beim Verbinden müssen dann dementsprechend td Einträge wegfallen.
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <h3>Grundgerüst einer HTML-Seite</h3>
+        </td>
+        <td>
+            <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;Aussagekräftiger Titel der Seite&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;Hier kommt der Inhalt der Seite ...&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+            Bei Verwendung von Umlauten, Accents, etc. immer charset="utf-8" angeben, sonst werden diese Zeichen nicht richtig dargestellt. Titel werden bei Suchmaschinen als Linktext verwendet.
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <h3>Elemente zur Strukturierung</h3>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><code>&lt;header&gt;</code></td>
+                    <td>Kopfzeilenbereich der HTML-Seite</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;main&gt;</code></td>
+                    <td>Hauptteil der HTML-Seite</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;footer&gt;</code></td>
+                    <td>Fußzeilenbereich der HTML-Seite</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;div&gt;</code></td>
+                    <td>generischer Container für beliebigen Inhalt</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;nav&gt;</code></td>
+                    <td>Navigationsbereich mit Links</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;article&gt;</code></td>
+                    <td>Selbstständiger Artikel innerhalb der Seite der für sich alleine stehen kann</td>
+                </tr>
+                <tr>
+                    <td><code>&lt;section&gt;</code></td>
+                    <td>Thematisch zusammenhängender Bereich in der HTML-Seite</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <h3>Links zum Thema</h3>
+        </td>
+        <td>
+<ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">https://developer.mozilla.org/en-US/docs/Web/HTML</a></li>
+    <li><a href="https://docs.webplatform.org/wiki/Main_Page">https://docs.webplatform.org/wiki/Main_Page</a></li>
+    <li><a href="http://w3c.github.io/html-reference/">http://w3c.github.io/html-reference/</a></li>
+    <li><a href="https://html5.validator.nu/">https://html5.validator.nu/</a></li>
+</ul>
+        </td>
+    </tr>
+
+<!--
+    <tr>
+        <td>
+            beispiel
+        </td>
+        <td>
+            <pre></pre>
+            beschreibung
+        </td>
+    </tr>
+-->
+
+</table>
+
+</main>
+
+<footer>
+<p style="text-align:center;font-size:0.9em;">716409 VU/3 Geoinformatik: Web mapping, Sommersemster 2016, Klaus Förster &amp; Bernd Öggl</p>
+</footer>
+
+</body>
+</html>

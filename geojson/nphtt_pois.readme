@@ -1,0 +1,21 @@
+Datenquelle: Land Tirol - data.tirol.gv.at
+https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/
+
+© Creative Commons www.creativecommons.org
+https://www.tirol.gv.at/data/nutzungsbedingungen/
+
+Arbeitsschritte
+---------------
+
+* Shapefile Downloaden und Entpacken (https://gis.tirol.gv.at/ogd/sport_freizeit/NPHT/nphtt_pointsofinterest_wgs84_shp.zip)
+* im QGIS mit Encoding UTF-8 öffnen
+* im QGIS als GeoJSON abspeichern und dabei gleichzeitig umprojizieren:
+    - Format: GeoJSON
+    - Save as: nphtt_pois.geojson
+    - CRS: EPSG:4326, WGS84
+    - Encoding: UTF-8
+    - COORDINATE_PRECISION: 7
+    - WRITE_BBOX: NO
+* im Texteditor Variablendeklaration window.POIS_GEOJSON= am Anfang des GeoJSON Files dazuschreiben und als nphtt_pois.geojson.js abspeichern
+
+

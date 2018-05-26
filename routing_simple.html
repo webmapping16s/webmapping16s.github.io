@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Routing mit der Leaflet Routing Machine</title>
+    <link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+    <script src="./js/leaflet/leaflet.js"></script>
+
+    <link rel="stylesheet" href="./js/leaflet.routing.machine/leaflet-routing-machine.css" />
+    <script src="./js/leaflet.routing.machine/leaflet-routing-machine.min.js"></script>
+    <script>
+        window.onload = function () {
+            var map = L.map('routingmap', {
+                layers : [
+                    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+                    })
+                ]
+            });
+
+            L.control.scale({
+                'imperial': false
+            }).addTo(map);
+
+            var routing = L.Routing.control({
+                router: new L.Routing.OSRMv1({
+                  serviceUrl: 'https://router.project-osrm.org/route/v1',
+                }),
+                fitSelectedRoutes : true
+            }).addTo(map);
+
+            routing.setWaypoints([
+                [47.26, 11.38],     // Universität Innsbruck
+                [47, 12.540]        // Matrei in Osttirol
+            ]);
+        };
+
+    </script>
+</head>
+<body>
+    <h1>Routing mit der Leaflet Routing Machine</h1>
+    <h3>Innsbruck - Matrei in Osttirol</h3>
+    <div id="routingmap" style='width:900px;height:600px;'></div>
+    <h3>Links</h3>
+    <ul>
+        <li><a href="http://www.liedman.net/leaflet-routing-machine/">Leaflet Routing Machine</a></li>
+        <li><a href="http://project-osrm.org/">OSRM - Open source routing engine</a></li>
+    </ul>
+</body>
+</html>

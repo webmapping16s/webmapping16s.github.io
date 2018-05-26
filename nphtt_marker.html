@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nationalpark Hohe Tauern Points of interest - Markers</title>
+<link rel="stylesheet" href="./js/leaflet/leaflet.css" />
+<script src="./js/leaflet/leaflet.js"></script>
+<script src="./geojson/nphtt_pois.geojson.js"></script>
+</head>
+<body>
+    <h1>Nationalpark Hohe Tauern Points of interest - Markers</h1>
+    <div id="map" style="width:900px;height:600px"></div>
+    <script>
+    window.onload = function () {
+
+        var map = L.map('map');
+
+        // Basis layer hinzufügen
+        L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
+            subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
+            attribution : 'Datenquellen: <a href="http://www.basemap.at/">basemap.at</a>, <a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/">Land Tirol</a>'
+        }).addTo(map);
+
+        // Maßstabsleiste hinzufügen
+        L.control.scale({
+            'imperial': false
+        }).addTo(map);
+
+        // Marker mit Pop ups über GeoJSON zur Karte hinzufügen
+        var pois = L.geoJson(window.POIS_GEOJSON, {
+            onEachFeature: function (feature, layer) {
+                //console.log(feature);
+                var description = feature.properties.NAME;
+                if (feature.properties.SEEHOEHE > 0 && feature.properties.SEEHOEHE !== 9999) {
+                    description += ' (' + feature.properties.SEEHOEHE + 'm)';
+                }
+                layer.bindPopup(description);
+            },
+        }).addTo(map);
+
+        // Ausschnitt setzen
+        map.fitBounds(pois.getBounds());
+
+    };
+    </script>
+
+    <article>
+        <h3>Links</h3>
+        <ul>
+            <li>Datenquelle: <a href="https://www.tirol.gv.at/data/datenkatalog/sport-und-freizeit/nationalpark-hohe-tauern-points-of-interest/">Nationalpark Hohe Tauern Points of interest</a> (<a href="https://gis.tirol.gv.at/ogd/sport_freizeit/NPHT/nphtt_pointsofinterest_wgs84_shp.zip">shp</a>)</li>
+        </ul>
+    </article>
+
+</body>
+</html>
